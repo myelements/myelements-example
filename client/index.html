@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>myElements.jquery - Single Page Applications like a sir...</title>
+    <style>
+    html, body, #singlepager {
+      width:100%;
+      height:100%;
+      overflow:auto;
+    }
+    // Compensate for the navbar
+    body {
+      padding-top:40px;
+    }
+    /*Debugging*/
+    /*
+    #singlepager {
+      border: 1px solid red;
+    }
+    */
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>        
+        </div><!--.navbar-header-->
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="myelement" data-react-on-dataupdate="session">
+              <a href='./me'> [%= data.session.user?"Hi":"Login" %]</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Hi</a></li>
+          </ul>          
+        </div>
+      </div><!--.container-fluid-->
+    </nav>
+    <div id="singlepager" class="tab-content">
+      <div class="tab-pane active">
+        <div class="container">
+          <div class="jumbotron">
+            <h1 style="word-wrap:break-word">myElements.jquery</h1>
+            <p class="lead"><em>Rich Web Applications like a sir...</em></p>
+            <p>
+              A jQuery interface that allows any HTML element to behave <strong>optimistically</strong> and aware of <strong>offline state</strong>,
+              <strong>backend messages</strong>, <strong>backend data updates</strong> 
+              and URL route updates. 
+            </p>
+            <p>
+              Useful if you love doing things the jQuery way, you like socket.io, express
+            </p>
+            <p>
+              <a href="examples.html" class="btn btn-primary">Examples</a>
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Examples</h2>
+              <ul>
+                <li><a href="/stockticker">Stock ticker</a></li>
+                <li><a href="/mongochat">Chat (mongodb backed)</a></li>
+                <li><a href="/tweets">tweets screen</a></li>
+                <li><a href="/connectivity">Connectivity issues reactions</a></li>
+              </ul>
+
+            </div><!--col-md-12-->
+          </div><!--row-->       
+
+        </div><!--.container-->
+      </div><!--tab-pane-->
+      <div id="me" class="tab-pane">
+        asd
+      </div><!--tab-pane-->
+    </div><!--tab-content-->
+        <script src="lib/jquery/jquery.min.js"></script>
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="/myelements.jquery.js"></script>
+    <script type="text/javascript">
+    $(function() {
+    $("#me").myelement({
+      reactOnPage: "/me"
+    }).on("page", function() {
+      $(this).tab("show");
+    })
+
+    });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>myElements.jquery - Blank examples</title>
+  </head>
+  <body>
+    <div class="container"> 
+    </div>
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/myelements.jquery.js"></script>
+
+    <script>
+
+      // Make every element show an alert when getting offline from the backend
+      $("div").on("disconnect", function() {
+        $(this).prepend("<p class='label label-danger statusIndicator'>This element is disconected from the backend</p>");
+      }).on("reconnect", function() {
+        $(this).find(".statusIndicator").remove();
+      }); 
+
+
+    </script>
+  </body>
+</html>

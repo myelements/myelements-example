@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="lib/jquery/jquery.min.js"></script>
+    <link href="lib/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css">
+    <style type="text/css">
+     .prettyprint ol.linenums > li { list-style-type: decimal; }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>myElements.jquery - Single Page Applications like a sir...</title>
+
+  </head>
+  <body>
+    <div class="container">
+    <h1 class="page-header"> Examples</h1>
+
+    <div class="row">
+      <div class="col-sm-6">   
+        <h4>Stock ticker</h4>                
+        <div class="row">
+          <div class="myelement col-md-4" data-react-on-dataupdate="lastStockSnapshot">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+              Last stock value for [%=data.lastStockSnapshot.name%] ([%=data.lastStockSnapshot.symbol%])
+              </div>
+              <div class="panel-body">
+                <strong> U$S [%=data.lastStockSnapshot.lastTradePriceOnly%]</strong> at <em>[%=data.lastStockSnapshot.lastTradeTime%]</em>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--.col-sm-6-->           
+    </div><!--.row-->
+    
+            
+    </div><!--.container-->
+    <script src="lib/bootstrap/bootstrap.min.js"></script>
+    <script src="/myelements.jquery.js"></script>
+
+    <script>
+   
+      // Make every element show an alert when getting offline from the backend
+      $(".myelement").on("disconnect", function() {
+        $(this).prepend("<p class='label label-danger statusIndicator'>This element is disconected from the backend</p>");
+      }).on("reconnect", function() {
+        $(this).find(".statusIndicator").remove();
+      }); 
+
+    </script>
+      <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+      <script type="text/javascript">
+        prettyPrint();
+      </script>
+  </body>
+</html>
